@@ -4,16 +4,32 @@
     <p class="container_conectese">Conéctese para Acceder a su Cuenta.</p>
   </div>
 
-  <form class="container_form">
+  <form [formGroup]="LoginFrom" class="container_form">
     <div class="ion-padding">
       <ion-item>
-        <ion-input placeholder="Usuario"></ion-input>
+        <ion-input formControlName="email" placeholder="Correo Electrónico"></ion-input>
         <ion-icon name="person-outline"></ion-icon>
       </ion-item>
+      <div *ngIf="this.LoginFrom.controls?.['email'].touched && this.LoginFrom.controls?.['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required">
+          Correo Electrónico es Requerido
+        </ion-text>
+        <ion-text *ngIf="errorControl.email.errors?.pattern">
+          El Correo Electrónico Debe Ser Valido
+        </ion-text>
+      </div>
       <ion-item>
-        <ion-input placeholder="Contraseña"></ion-input>
+        <ion-input formControlName="password" placeholder="Contraseña"></ion-input>
         <ion-icon name="lock-closed-outline"></ion-icon>
       </ion-item>
+      <div *ngIf="this.LoginFrom.controls?.['password'].touched && this.LoginFrom.controls?.['password'].invalid">
+        <ion-text *ngIf="errorControl.password.errors?.required">
+          Contraseña es Requerido
+        </ion-text>
+        <ion-text *ngIf="errorControl.password.errors?.pattern">
+          La Contraseña Debe Tener al Menos 8 Digitos: <br> <ion-label color="primary">Un Carácter</ion-label>  <br> <ion-label color="danger">Un Mayúscula</ion-label> <br> <ion-label color="medium">Un Número</ion-label>
+        </ion-text>
+      </div>
       <div class="reset-password">
         <a class="container_password" [routerLink]="['/reset-password']">Olvidaste a Contraseña?</a>
       </div>
@@ -25,7 +41,7 @@
   </form>
 
   <ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button [routerLink]="['/home']">
+    <ion-fab-button (click)="login()">
       <ion-icon  name="chevron-forward"></ion-icon> 
     </ion-fab-button>
   </ion-fab>
