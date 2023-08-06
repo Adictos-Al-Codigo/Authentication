@@ -42,4 +42,24 @@ export class LoginPage implements OnInit {
         }
     }
   }
+
+  async loginInWithTwitter() {
+    try {
+      await this.authService.signInWithTwitter();
+      // Aquí rediriges a la página deseada después de iniciar sesión con éxito.
+    } catch (error) {
+      // Manejo de errores
+      console.error('Error al iniciar sesión con Twitter:', error);
+    }
+  }
+
+  // Metodo 2
+
+  onClickTwitterLogin(){
+    this.authService.TwitterAuth().then((res) =>{
+      this.router.navigate(['/home']);
+    }).catch(err =>{
+      console.log(err);
+    });
+  }
 }

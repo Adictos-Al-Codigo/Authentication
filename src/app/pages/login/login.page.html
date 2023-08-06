@@ -30,6 +30,8 @@
           La Contraseña Debe Tener al Menos 8 Digitos: <br> <ion-label color="primary">Un Carácter</ion-label>  <br> <ion-label color="danger">Un Mayúscula</ion-label> <br> <ion-label color="medium">Un Número</ion-label>
         </ion-text>
       </div>
+      <ion-label class="text_sigin" color="tertiary">Iniciar Sesión con tus Redes Sociales</ion-label>
+      <ion-icon class="icon_sigin" name="logo-twitter"></ion-icon>
       <div class="reset-password">
         <a class="container_password" [routerLink]="['/reset-password']">Olvidaste a Contraseña?</a>
       </div>
@@ -37,8 +39,9 @@
         <p>Eres Miembro Nuevo? <a [routerLink]="['/register']">¡Regístrarse Ahora!</a></p>
       </div>
     </div>
-    
   </form>
+
+
 
   <ion-fab vertical="bottom" horizontal="end">
     <ion-fab-button (click)="login()">

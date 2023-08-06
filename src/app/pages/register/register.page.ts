@@ -44,4 +44,15 @@ export class RegisterPage implements OnInit {
         }
     }
   }
+
+  async signUpWithTwitter() {
+    try {
+      const user = await this.authService.signUpWithTwitter();
+      
+      // Aquí puedes redirigir a la página de inicio o realizar otras acciones después del registro exitoso.
+    } catch (error) {
+      // Manejo de errores
+      console.error('Error al registrarse con Twitter:', error);
+    }
+  }
 }
